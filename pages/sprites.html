@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./css/retro.css">
 </head>
 
-<body>    <nav class="retro-nav">
+<body>
+    <nav class="retro-nav">
         <div class="nav-container">
             <div class="nav-item"><a href="index.html">Hovedside</a></div>
             <div class="nav-item active"><a href="sprites.html">C64 Sprites</a></div>
@@ -19,17 +20,212 @@
         <p>
             Sprites er en liten bit av grafikk som kan legges på kjærmen uavhenging av andre ting på skjermen.
             Man håndtere sprites ved å sette spesifikke minneadresser i C64.
-            Dette gir mulighet for å lage bevegelige objekter som kan flytte seg over skjermen uten å påvirke bakgrunnen.
-            Selv om det kan være litt utfordrende å sette opp sprites, er det en enklere metode enn å måtte tegne pixel for pixel.
-            Man kn flytte sprites rundt på skjermen ved å endre minneadresser, noe som gjør det mulig å lage animasjoner og interaktive elementer i spill.
+            Dette gir mulighet for å lage bevegelige objekter som kan flytte seg over skjermen uten å påvirke
+            bakgrunnen.
+            Selv om det kan være litt utfordrende å sette opp sprites, er det en enklere metode enn å måtte tegne pixel
+            for pixel.
+            Man kn flytte sprites rundt på skjermen ved å endre minneadresser, noe som gjør det mulig å lage animasjoner
+            og interaktive elementer i spill.
         </p>
         <p>
             Sprites kommer i to variater. high-res og multi-color. En sprite er delt opp i en 24x21 piksler.
             Som igjen passer inn i 63 bytes. Der hver byte representerer 8 piksler i bredden.
-            
+
         </p>
         <img src="./img/sprites-grid.png" alt="Skjermbilde av emulatoren" width="600">
+        <p>
+            For å jobbe med sprites er det en del minneadresser, som er viktige å kjenne til:
+        <ul>
+            <li>
+                <strong>Slå av eller på sprites:</strong>
+                Addressen man jobber mot der 53269, der hver bit representerer en sprite. der bit 0 er sprite 0, bit 1
+                er sprite 1, osv.
+                Verdiene man setter inn i addressen er da disse:
+                <table class="retro-table">
+                    <thead>
+                        <tr>
+                            <th>Sprite nummer:</th>
+                            <th>7</th>
+                            <th>6</th>
+                            <th>5</th>
+                            <th>4</th>
+                            <th>3</th>
+                            <th>2</th>
+                            <th>1</th>
+                            <th>0</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Bit verdi
+                            </td>
+                            <td>128</td>
+                            <td>64</td>
+                            <td>32</td>
+                            <td>16</td>
+                            <td>8</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </li>
+            <li>
+                <strong>Sprite posisjon på skjermen:</strong>
+                Hver sprite har to minneadresser for posisjon, en for x og en for y. Som kan holde 8 bit verdier.
+                X posisjonen kan ha en 9 bit verdi, som ikke passer inn i de 8 som er beskrevet her. For å sette den 9
+                bruker man en annen addresse.
+                Addressen er 53264 der verdien representere den 9 bit verdien for en gitt sprite. F.eks. 32 for sprite
+                5, så samme verdier som for å slå av og på.
+                <table class="retro-table">
+                    <thead>
+                        <tr>
+                            <th>Sprite nr</th>
+                            <th>0</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>X posisjon</td>
+                            <td>53248</td>
+                            <td>53250</td>
+                            <td>53252</td>
+                            <td>53254</td>
+                            <td>53256</td>
+                            <td>53258</td>
+                            <td>53260</td>
+                            <td>53262</td>
+                        </tr>
+                        <tr>
+                            <td>Y posisjon</td>
+                            <td>53249</td>
+                            <td>53251</td>
+                            <td>53253</td>
+                            <td>53255</td>
+                            <td>53257</td>
+                            <td>53259</td>
+                            <td>53261</td>
+                            <td>53263</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>
+                <strong>Sprite pekere:</strong>
+                Hver sprite har en egen minneadresse som fungerer som peker til sprite-dataen. Disse pekerne er plassert
+                1016 bytes etter starten av tekst-RAM. Standardadressen for tekst-RAM er 1024, noe som betyr at
+                sprite-pekerne befinner seg på adressene 2040 til 2047. Hver peker må angi en adresse som er delelig med
+                64. For eksempel, hvis sprite-dataen starter på adresse 192, skal verdien i sprite-pekeren være 192 delt
+                på 64, altså 3.
+            </li>
+            <li>
+                <p>
+                    <strong>Sprite farger:</strong>
+                    Addressne for sprite-fargtene er fra 53287 til 53294. Hver sprite har en egen farge, og disse
+                    adressene
+                    brukes til å sette fargen for hver sprite. Fargene er representert som 8-bit verdier, der hver verdi
+                    tilsvarer en spesifikk farge i C64s fargepalett.
+
+                    For multi farge modus er det to addresser til som er delt mellom alle sprites,
+                    53285 for 01 bits sprite data og 53286 for 11 bits sprite data.
+                <table class="retro-table">
+                    <thead>
+                        <tr>
+                            <th>Sprite nr</th>
+                            <th>0</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Register
+                            </td>
+                            <td>
+                                53287
+                            </td>
+                            <td>
+                                53288
+                            </td>
+                            <td>
+                                53289
+                            </td>
+                            <td>
+                                53290
+                            </td>
+                            <td>
+                                53291
+                            </td>
+                            <td>
+                                53292
+                            </td>
+                            <td>
+                                53293
+                            </td>
+                            <td>
+                                53294
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                </p>
+                <p>Fargene ser slik ut:</p>
+                <img src="./img/sprite-farger.png" alt="C64 sprite farger" width="600">
+
+            </li>
+        </ul>
+        </p>
+        <p>
+            Siden vi skal eksperimentere med sprites i løpet av kvelden, kan det være nyttig med verktøy som hjelper til
+            å generere DATA-verdiene. Her er et nettbasert verktøy som lar deg tegne en sprite og lagre resultatet som
+            BASIC 2.0-kode. For de som ønsker en mer manuell tilnærming, kan et regneark også benyttes til å beregne
+            byte-verdiene. Koden fra verktøyet er ment som støtte og inspirasjon.
+
+
+            <a href="https://www.spritemate.com/" target="_blank">spritemate</a>
+        </p>
+        <p>
+            Om man skal prøve å gjøre det slik man ofte gjorde i gamle dager, kan man bruke et regne ark, for så å tenge
+            inn pikslene, så regne ut byte verdien.
+            Bruk da dette bilde som referanse.
+        </p>
+        <img src="./img/sprites-gird-ark.png" width="600" />
+        <p>
+            Her er et enkelt eksempel på et sprite-program som viser to sprites på skjermen. Programmet leser inn
+            sprite-dataene fra startadressen til sprite 1, hvor de første 63 byte utgjør dataene for sprite 1, og de
+            neste 63 byte for sprite 2. Deretter settes sprite 1 til å peke på adresse 200*64 = 12800, og sprite 2 til å
+            peke på adresse 201*64 = 12864.
+
+            <a href="./disks/spritedemos.d64">Last ned sprite demo disk</a>
+        </p>
         <!-- Content about C64 sprites will be added here -->
+    </section>
+    <section id="footer-content">
+        <strong>
+            Kilder
+        </strong>
+        <ul>
+            <li>
+                <a href="https://www.c64-wiki.com/wiki/Sprite" target="_blank">C64 wiki spirtes</a>
+            </li>
+        </ul>
     </section>
 </body>
 
