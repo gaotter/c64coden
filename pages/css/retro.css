@@ -156,3 +156,13 @@ li {
     color: #FF7F50;
     text-decoration: underline;
 }
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0000AA;
+    color: #7CFEFE;
+    padding: 2px 4px;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    display: inline-block;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C64 Filhåndtering</title>
+    <link rel="stylesheet" href="./css/retro.css">
+</head>
+
+<body>
+    <nav class="retro-nav">
+        <div class="nav-container">
+            <div class="nav-item"><a href="index.html">Hovedside</a></div>
+            <div class="nav-item active"><a href="filehandling.html">Filhåndtering</a></div>
+            <div class="nav-item"><a href="basic-intro.html">Basic Intro</a></div>
+            <div class="nav-item"><a href="sprites.html">C64 Sprites</a></div>
+            <div class="nav-item"><a href="grafikk.html">Grafikk</a></div>
+        </div>
+    </nav>
+    <section id="main-content">
+        <h1>Intro til C64 Filhåndtering</h1>
+        <p>
+            Når man skal jobbe med filer på en Commodore 64, bruker man kommandoer i Basic for å lagre filer på
+            kassetter eller disketer.
+            Hver enhet har et nummer, hvor 1 er kassetten og 8 første diskettstasjonen. Neste diskettstasjon vil være 9,
+            og så videre.
+        </p>
+        <p>
+            <strong>LOAD</strong>
+        </p>
+        <p>
+            Kommandoen for a laste inn en fil er <code>LOAD "filenavn","enhets nummer", "metode nummer"</code>.
+            Default er disket så om man bare skriver LOAD vil den. Spørre deg om å starte kassett spilleren.
+            Om man ønsker å laste en spesifikk fil, kan man skrive navnet på den. Da blir det
+            <code>LOAD "filenavn"</code> for kassett eller <code>LOAD "filenavn",8</code> for diskett.
+            Det siste nummeret er for å spesifisere metoden for lasting. Der 0 laster det inn i BASIC minne, men 1,
+            bruker lokasjonen beskrevet i de to første bytene i PNG fila.
+
+
+
+
+        </p>
+        <p>
+            Om man ønsker å se innholder på en diskett, kan bruke kommandoen <code>LOAD "$",8</code> og deretter
+            <code>LIST</code> for å vise innholdet.
+        </p>
+        <p>
+            For å laste inn en spesifikk fil fra diskett, bruker du kommandoen <code>LOAD "filnavn",8</code>.
+            Ønsker du å laste inn den første filen på disketten, kan du bruke <code>LOAD "*",8</code>.
+            Dersom du kun kjenner starten på filnavnet, kan du benytte jokertegn: <code>LOAD "filnavn*",8</code>.
+            Du kan også bruke spørsmålstegn som plassholder for enkelttegn, for eksempel <code>LOAD "fil???n",8</code>.
+        </p>
+        <p>
+            <strong>SAVE</strong>
+        </p>
+        <p>
+            Kommandoen for å lagre en fil er <code>SAVE "filnavn","enhets nummer", "metode nummer"</code>.
+            Om man bare skriver <code>SAVE</code> will den lagre filen som et BASIC program, men et anonymt navn.
+            På diskett blir da kommandoen <code>SAVE "filnavn",8</code>, om man skal lager et Basic program.
+            For binert bruker man kommandoen <code>SAVE "filnavn",8,1</code>. der 1 spesifiserer at det er binært.
+            Det siste tallet kan også være 2, som er kun i bruk for kassetter for å lagre "end of tape" info.
+            Om man prøver å lagre en fil som allerede finnes, vil ikke noe skje. Filen vil ikke bli laget på nytt.
+            Få å overskrive filen kan man legge på <code>@0:</code>. Så for overskrive en fil på diskett, kan du bruke
+            <code>SAVE "@0:filnavn",8</code>.
+            Denne metoden er kjent for å ikke være helt stabilt, så en del sletter først filen for så å larger på nytt.
+            (Vi er så heldig nå at vi kan da en back up av filen, i motsetning til i de gode gamle dager)
+        </p>
+        <p>
+            <strong>Slette en fil</strong>
+        </p>
+        <p>
+            Det er ikke en kommando å slette en fil slik som save aller load. For å slette en fil må da bruke en disk
+            kommandoen.
+            Denne litt kryptiske kommandoen er <code>OPEN 1,8,15,"S:filename":CLOSE 1</code> for diskett. S stor her for
+            scratch.
+
+            Det finnes flere disk kommandoer som man kan lese om her <a
+                href="https://www.c64-wiki.com/wiki/Drive_command" target="_blank">C64 wiki drive commands</a>
+        </p>
+    </section>
+    <section id="footer-content">
+        <strong>
+            Kilder
+        </strong>
+        <ul>
+            <li>
+                <a href="https://www.c64-wiki.com/wiki/LOAD" target="_blank">C64 Wiki Load</a>
+            </li>
+            <li>
+                <a href="https://www.c64-wiki.com/wiki/SAVE" target="_blank">C64 Wiki Save</a>
+            </li>
+            <li>
+                <a href="https://www.c64-wiki.com/wiki/Drive_command" target="_blank">C64 wiki drive commands</a>
+            </li>
+        </ul>
+    </section>
+</body>
+
+</html>
