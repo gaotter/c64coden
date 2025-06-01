@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C64 Basic Intro</title>
     <link rel="stylesheet" href="./css/retro.css">
 </head>
+
 <body>
     <nav class="retro-nav">
         <div class="nav-container">
@@ -19,15 +21,253 @@
     <section id="main-content">
         <h1>Intro til C64 BASIC</h1>
         <p>
-            BASIC (Beginners' All-purpose Symbolic Instruction Code) er programmeringsspråket som følger med Commodore 64.
-            Det gir brukerne mulighet til å skrive programmer direkte på maskinen, og er enkelt nok til at nybegynnere kan lære det raskt.
+            BASIC (Beginners' All-purpose Symbolic Instruction Code) språket ble utviklet 1964 av John G. Kemeny og
+            Thomas E. Kurtz ved Dartmouth College i Dartmouth College, New Hampshire, USA.
+            Ideen var å lage et språk som utenfor vitenskapelige og tekniske miljøer kunne bruke. Det ble raskt poplært
+            på mange datamaskiner, inkludert Commodore 64.
+            Versionen som brukes på C64 er en tilpasset versjon av BASIC 2.0, som de kjøpe rettighetene til fra
+            Microsoft.
+            Det gir brukerne mulighet til å skrive programmer direkte på maskinen, og er enkelt nok til at nybegynnere
+            kan lære det raskt.
         </p>
         <p>
-            BASIC på C64 inkluderer kommandoer for å manipulere tekst, grafikk, lyd og filer. Det er et kraftig verktøy for å lage alt fra enkle programmer til komplekse spill.
+            BASIC på C64 inkluderer kommandoer for å manipulere tekst, grafikk, lyd og filer. Det er et kraftig verktøy
+            for å lage alt fra enkle programmer til komplekse spill.
         </p>
         <p>
-            Eksempler og veiledninger for BASIC-programmering vil bli lagt til her.
+            Når man koder i BASIC skriver man som regel et tall som er linjenummeret, etterfulgt av en kommando. For
+            eksempel:<br>
+            <code>
+                10 PRINT "HELLO WORLD"<br>
+                20 GOTO 10
+            </code> <br>
+            Man kunne brukt linje nummer 1, 2 osv. Men da har man ikke mulighet til å sette inn nye linjer senere. Så
+            det er vanlig å bruke 10, 20, 30 osv. for å ha plass til å sette inn nye linjer.
+            For å kjøre programmet skriver man <code>RUN</code> i BASIC prompten. Dette vil starte programmet fra linje
+            10, og fortsette til det når slutten eller en <code>STOP</code> kommando.
         </p>
+        <p>
+            Når man ønsker å endre en linje kan man bare naviger til linjenummeret med pil tastene og skrive inn den
+            nye, så enter
+        </p>
+        <p>
+            <strong>Variabler</strong>
+
+        </p>
+        <p>
+            BASIC har tre base typer variabler: real (tall), integers (heltall) og strenger (tekst). For arrays bruker
+            man en parantes etter variabelnavnet, for eksempel <code>A(10)</code> for en array med 10 elementer,
+            av typen real. Det er viktig å merke seg at variabeler er bare unike for de to første bokstavene, så ABC og
+            ABD blir samme variabel.
+            For å kovnerter mellom variabeltyper kan man bruke <code>VAL</code> for å konvertere en streng til et real
+            tall, <cos>INT</cos> for integer og <code>STR$</code> for å konvertere et tall til en streng.
+
+        <ul>
+            <li>
+                Real: Brukes for desimaltall, for eksempel <code>R = 3.14</code> og har en rekkevidde fra
+                ±2.93873588×10−38 til ±1.70141183×1038.
+            </li>
+            <li>
+                Integer: Brukes for heltall, for eksempel <code>I% = 42</code> og har en rekkevidde fra -32768 til
+                32767, og kan defineres slik.
+            </li>
+            <li>
+                Strenger: Brukes for tekst, for eksempel <code>S$ = "HELLO"</code>.
+            </li>
+        </ul>
+
+        </p>
+        <p>
+            <strong>Generelle kommandoer:</strong><br>
+        </p>
+        <p>
+            <strong>LIST</strong>: Viser koden i programmet.<br>
+        <ul>
+            <li>
+                LIST viser alle linjene i programmet, fra den første til den siste.
+            </li>
+            <li>
+                LIST kan også brukes med et linjenummer for å vise en spesifikk linje, for eksempel <code>LIST 10</code>
+                viser linje 10.
+            </li>
+            <li>
+                LIST kan også brukes med et intervall, for eksempel <code>LIST 10-20</code> viser linjene fra 10 til 20.
+
+            </li>
+            <li>
+                LIST kan også vise alt frem til en spesifikk linje, for eksempel <code>LIST -10</code> alle linjer frem
+                til 10.
+                Eller <code>LIST 20-</code> viser alle linjer som begynner med 20.
+            </li>
+        </ul>
+
+        </p>
+        <p>
+            PRINT: Skriver ut tekst til skjermen.<br>
+        <ul>
+            <li>
+                Print kan skrive ut text <code>PRINT "HELLO WORLD"</code> skriver ut teksten "HELLO WORLD" på
+                skjermen.
+            </li>
+            <li>
+                Man kan også gjøre utreginger direkte <code>PRINT 123 + 5</code> skriver ut resultatet av 123 + 5,
+                som er 128.
+            </li>
+            <li>
+                Print tar også printer resultatet av funsjoner, som for eksempel <code>PRINT SQR(16)</code> skriver
+                ut kvadratroten av 16, som er 4.
+            </li>
+            <li>
+                Om man ønker å slå sammen text med verdier, kan man enten bruke komma eller semikolon. Noen ganger
+                får det å ikke ha noe mellom.
+                + fungerer bare med tekst.
+                <code>PRINT "HELLO", 123</code> skriver ut "HELLO 123" med et mellomrom imellom.
+                <code>PRINT "HELLO"; 123</code> skriver ut "HELLO123" uten mellomrom.
+                <code>PRINT "HELLO" 123</code> skriver ut "HELLO123" uten mellomrom.
+            </li>
+        </ul>
+
+        </p>
+        <p>
+            <strong>INPUT</strong>
+        </p>
+        <p>
+            INPUT tar inn først en melding til brukeren, og deretter venter en variabel eller liste av variabler, som
+            skal skrives inn av brukeren.
+            Om typen av variabelen ikke er riktig, for man en feilmelding ?REDO FROM START. For å kunne håndtere dette
+            bedre kan man bruke string variabler.
+            Så håndtere dette selv i programmet.
+        <ul>
+            <li>
+                Enkel INPUT kommando kan se slik ut: <code>INPUT "Skriv inn ditt navn: "; A$</code>
+
+            </li>
+            <li>
+                Flere variabler kan også brukes: <code>INPUT "Skriv inn ditt navn og alder: "; A$, I%</code>
+            </li>
+
+        </ul>
+        </p>
+        <p>
+            <stong>Et lite eksempel på det vi har godt igjennom så langt.</strong>
+                <code>
+                10 PRINT "Enkel summering++"<br>
+                20 INPUT "skriv inn ditt navn", A$<br>
+                30 INPUT "Skriv inn to tall";B,C<br>
+                40 PRINT "Hei "+ A$+ " summen av tallene du ga meg er "; b+c<br>
+                50 PRINT "cosinus til det første tallet er "; COS(B)<br>
+            </code>
+        </p>
+        <p>
+            <img src="./img/basic-input-eks.png" alt="Eksempel på BASIC input" width="600">
+        </p>
+        <p>
+            <strong>IF</strong>
+        </p>
+        <p>
+            En ting å merge seg er at BASIC ikke har en <code>ELSE</code>. Så men er nødt til å bruke <code>IF</code> og
+            <code>GOTO</code> for å lage en
+            <code>ELSE</code> funksjonalitet.
+        </p>
+        <p>
+            If på en linje kan se slik ut:
+            <code>IF A$ = "HELLO" THEN PRINT "Du skrev HELLO"</code>
+            Om A$ er lik "HELLO" vil den skrive ut "Du skrev HELLO". Ellers vil den ignorere resten av linjen.
+            Det er lett for at det blir spaggetti kode, så tenk litt nøye igjennom hvordan du bruker
+            <code>IF</code> og <code>GOTO</code>.
+
+            Opperajonene for <code>IF</code> er:
+        <ul>
+            <li>= Sjekker om to verdier er like.</li>
+            <li>&lt;&gt; Sjekker om to verdier ikke er like.</li>
+            <li>&lt; Mindre enn</li>
+            <li>&gt; Større enn</li>
+            <li>&lt;=: Sjekker om den første verdien er mindre enn eller lik den andre.</li>
+            <li>&gt;=: Sjekker om den første verdien er større enn eller lik den andre.</li>
+            <li>Logisk AND, OR eller NOT</li>
+        </ul>
+        Exempel på bruk av <code>IF</code>:
+        <ul>
+            <li>
+                IF THEN: Sjekker en betingelse og utfører en handling hvis den er sann. Om det er false vill den
+                ignorere resten av linjen.
+            </li>
+            <li>
+                IF GOTO: Sjekker en betingelse og hopper til en spesifikk linje hvis den er sann.
+            </li>
+            <li>
+                IF GOSUB Sjekker en betingelse og skriver ut en melding hvis den er sann. så hopper den til en
+                subrutine for å utføre en handling.
+                For så å gå tilbake til linjen etter GOSUB når subrutinen er ferdig.
+            </li>
+        </ul>
+        </p>
+        <p>
+            <img src="./img/basic-if-eks1.png" alt="Eksempel på BASIC IF" width="600">
+        </p>
+        <p>
+            <strong>FOR loop</strong>
+        </p>
+        <p>
+            For loop er en måte å gjenta en handling et bestemt antall ganger. Den har tre deler: startverdi, sluttverdi
+            og inkrementering.
+            For eksempel:
+            I sin enkelste form kan en FOR loop se slik ut:<br>
+            <code>
+            10 FOR I = 1 TO 10 <br>
+            20 PRINT I <br>
+            30 NEXT I <br>
+            </code>
+            <br> Om man ønker å legge på 2 hver gang kan man bruke: <br>
+            <code>
+            10 FOR I = 1 TO 10 STEP 2 <br>
+            20 PRINT I <br>
+            30 NEXT I <br>
+            </code>
+            <br>
+            Dette vil skrive ut tallene 1, 3, 5, 7, 9. <br>
+            Om man vill telle nedover kan man bruke STEP -1, for eksempel:<br>
+            <code>
+            10 FOR I = 10 TO 1 STEP -1 <br>
+            20 PRINT I <br>
+            30 NEXT I <br>
+            </code>
+            <br>
+            Man kan også bruke en variabel i stedet for et tall, for eksempel:<br> <code>
+            10 N = 5 <br>
+            20 FOR I = 1 TO N <br>
+            30 PRINT I <br>
+            40 NEXT I <br>
+            </code>
+        </p>
+        <p>
+            <strong>Eksemel program</strong>
+        </p>
+        <p>
+            Her er et lite eksempel på et BASIC program som bruker det vi har gått igjennom, en enkel bolig kalkulator
+            (kan ikke gå god for at alle utreginger stemmer, men er basert på Sølves bok. Jeg kan ha bomma 😉).
+            Progammet heter BCALCV2, det er andre versjoer der også. Som er tidligere forsøk.
+            <a href="./disks/valuehousing.d64">Last ned disk med programmet</a>
+        </p>
+        <P>
+            Hoved del:
+        </P>
+        <p>
+            <img src="./img/calc-hov.png" alt="Hoved del av bolig kalkulatoren" width="600">
+        </p>
+        <p>
+            <strong>Sub verdi endring index</strong>
+        </p>
+        <p>
+            <img src="./img/calc-ind.png" alt="Sub verdi endring index" width="600">
+        </p>
+        <p>
+            <strong>Sub verdi endring areal</strong>
+        </p>
+        <p>
+            <img src="./img/calc-end.png" alt="Sub verdi endring areal" width="600">
+        </p>
+
     </section>
     <section id="footer-content">
         <strong>
@@ -40,4 +280,5 @@
         </ul>
     </section>
 </body>
+
 </html>
