@@ -241,6 +241,46 @@
             </code>
         </p>
         <p>
+            <strong>GOTO</strong>
+        </p>
+        <P>
+            GOTO er en kommando som lar deg hoppe til en spesifikk linje i programmet. Dette kan være nyttig for å lage
+            enkle kontrollstrukt. GOTO er kjent for å lage spagetti kode, og i moderne programmering er det
+            generelt ikke anbefalt. Men i BASIC er det en viktig del av språket.
+            For eksempel:
+        </P>
+        <p>
+            <code>
+            10 PRINT "Skriv inn et tall: "<br>
+            20 INPUT A<br>
+            30 IF A < 10 THEN GOTO 60<br>
+            40 PRINT "Tallet er større enn eller lik 10"<br>
+            50 PRINT GOTO 70<br>
+            60 PRINT "Tallet er mindre enn 10"<br>
+            70 PRINT "Ferdig"<br>
+            </code>
+        </p>
+        <p>
+            <strong>GOSUB</strong>
+        </p>
+        <p>
+            GOSUB er en kommando som lar deg hoppe til en subrutine, som er en del av programmet som kan kjøres flere
+            ganger. Dette kan være nyttig for å organisere koden og unngå duplisering. Det er ikke noe input eller return verdier, så man må jobbe med
+            variabler som er definert før GOSUB kommandoen.
+            For eksempel:
+        </p>
+        <p>
+            <code>
+            10 PRINT "Skriv inn et tall: "<br>
+            20 INPUT A<br>
+            30 GOSUB 100<br>
+            40 PRINT "Ferdig"<br>
+            50 END<br>
+            100 PRINT "Tallet du skrev inn er "; A<br>
+            110 RETURN<br>
+            </code>
+        </p>
+        <p>
             <strong>Eksemel program</strong>
         </p>
         <p>
