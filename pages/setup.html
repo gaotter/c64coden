@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C64 Setup</title>
+    <link rel="stylesheet" href="./css/retro.css">
+</head>
+<body>
+    <nav class="retro-nav">
+        <div class="nav-container">
+            <div class="nav-item"><a href="index.html">Hovedside</a></div>
+            <div class="nav-item active"><a href="setup.html">Set Up</a></div>
+            <div class="nav-item"><a href="filehandling.html">Filhåndtering</a></div>
+            <div class="nav-item"><a href="basic-intro.html">Basic Intro</a></div>
+            <div class="nav-item"><a href="sprites.html">C64 Sprites</a></div>
+            <div class="nav-item"><a href="grafikk.html">Grafikk</a></div>
+        </div>
+    </nav>
+    <section id="main-content">
+        <h1>Set Up av C64 miljø</h1>
+       <p>For å kunne ha gleden av å oppleve de gode gamle dager, må man enten ha en C64 selv eller så sette opp en
+            miljø ved hjelp av et emulator.</p>
+        <p>Her er stegen man trenger for å komme i gang:</p>
+        <ol>
+            <li>
+                Last ned en emulator. Dette kan man finne her
+                <a href="https://vice-emu.sourceforge.io/" target="_blank">vice emulator</a>
+                eller gå rett på den jeg kommer til å bruke som er
+                <a href="https://sourceforge.net/projects/vice-emu/files/releases/binaries/windows/GTK3VICE-3.9-win64.zip/download"
+                    target="_blank">GTK3VICE-3.9-win64.zip</a>.
+            </li>
+            <li>
+                Zipp opp filen til ønsket sted på og naviger inn til relativt fra der man zippet opp filen
+                \GTK3VICE-3.9-win64\bin og kjør x64sc.exe
+                <ul>
+                    <li>Tips for full sceen bare dobbleklikk i emulator viduet</li>
+                </ul>
+            </li>
+            <li>
+                <p>Når emulatoren er started vil det se slik ut:</p>
+                <img src="./img/emulator-started.png" alt="Skjermbilde av emulatoren" width="600">
+            </li>
+            <li>
+                <p>Emulatoren er satt opp med Engelsk tastature. Jeg har måttet gjøre dette hver gang jeg starter
+                    emulatoren. Så for å sette opp med noe nærmere Norsk: </p>
+                <p>Velg setting</p>
+                <img src="./img/emulator-settings.png" width="600">
+                <p>Velg enten dansk eller svensk</p>
+                <img src="./img/emulator-selectl.png" width="600">
+            </li>
+            <li>
+                <p>
+                    Vi skal bruke disker i emulatoren, får å kunne lagre den fantastiske koden vi lager, og lære oss
+                    hvordan man gjorde det i de gode game dager.
+                <p>For å lage en ny disk følg disse stegene:</p>
+                <p>Velg Create and attach new disk image</p>
+                <img src="./img/emulator-create-d.png" width="600">
+                <p>Gi disken et navn, husk å skriv navn i teskt boksen under også. Jeg fikk problemer når jeg ikke
+                    gjorde det. Så trykk lagre</p>
+                <img src="./img/emulator-create-d-save.png" width="600">
+                </p>
+                <p>Om kan ønsker å koble til en ekisterenede disk kan man følge disse stegene:
+                <p>Velg file Attach image, så velg Drive #8</p>
+                <img src="./img/emulator-file-attach.png">
+                <p>Naviger til der disken er lagret. Fil typen som er mest vanlig er [navn].d64. </p>
+                <img src="./img/emulator-file-attach2.png" width="600">
+                </p>
+                <p>
+                    Om du har lyst å prøve en disk med innhold i kan du laste ned den her. For så å attache den og skriv
+                    LOAD "TEST",8 etterfukt av RUN.
+                    Får du en melding på skjermen som ikke er en feilmelding, så er du good to go.
+                    <a href="./disks/test.d64">Last ned test disk</a>
+                </p>
+            </li>
+        </ol>
+    </section>
+</body>
+</html>
