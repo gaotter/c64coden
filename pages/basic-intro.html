@@ -265,7 +265,8 @@
         </p>
         <p>
             GOSUB er en kommando som lar deg hoppe til en subrutine, som er en del av programmet som kan kjøres flere
-            ganger. Dette kan være nyttig for å organisere koden og unngå duplisering. Det er ikke noe input eller return verdier, så man må jobbe med
+            ganger. Dette kan være nyttig for å organisere koden og unngå duplisering. Det er ikke noe input eller
+            return verdier, så man må jobbe med
             variabler som er definert før GOSUB kommandoen.
             For eksempel:
         </p>
@@ -278,6 +279,27 @@
             50 END<br>
             100 PRINT "Tallet du skrev inn er "; A<br>
             110 RETURN<br>
+            </code>
+        </p>
+        <p>
+            <strong>Poke og Peek</strong>
+        </p>
+        <p>
+            Poke og Peek er to kommandoer som lar deg lese og skrive direkte til minnet på C64. Dette kan være nyttig for
+            å manipulere grafikk, lyd eller andre lavnivå operasjoner.
+            Poke skriver en verdi til en spesifikk adresse i minnet, mens Peek leser verdien fra en spesifikk adresse.
+            For eksempel:
+            <code>
+            10 POKE 53280, 0<br>
+            20 POKE 53281, 0<br>
+            30 PRINT "Bakgrunnsfargen er satt til svart"<br>
+            </code>
+            Dette setter bakgrunnsfargen til svart ved å skrive verdien 0 til adressene 53280 og 53281, som er
+            bakgrunnsfarge registrene på C64.
+            Peek kan brukes til å lese verdien fra en adresse, for eksempel:
+            <code>
+            10 A = PEEK(53280)<br>
+            20 PRINT "Bakgrunnsfargen er "; A<br>
             </code>
         </p>
         <p>
@@ -306,6 +328,31 @@
         </p>
         <p>
             <img src="./img/calc-end.png" alt="Sub verdi endring areal" width="600">
+        </p>
+        <p>
+            <strong>Hva gjør denne?</strong>
+        </p>
+        <p>
+            <code>
+                    10 sz = 49152 <br>
+                    20 for x=0 to 8: read y: poke sz+x,y: print sz+x,y: next x <br>
+                    30 data 238,32,208,238,33,208,76,0,192 <br>
+                    40 sys sz
+            </code>
+
+        </p>
+        <p>
+            <button onclick="document.querySelector('p[hidden]').hidden = false;">Vis svar</button>
+        </p>
+        <p hidden="hidden">
+            Her brukes poke i for å sette inn register og input verdier inn i minne. For så bruke sys for å kjøre
+            programmet til å begynne å eksekevere basert på det som ligger i det minne området. Så man bruker BASIC til
+            å sette opp et assembler program i minnet. <br><br>
+            <code>
+                inc $d020 <br>
+                inc $d021 <br>
+                jmp $c000
+            </code>
         </p>
 
     </section>
