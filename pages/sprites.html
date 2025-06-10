@@ -22,7 +22,12 @@
     <section id="main-content">
         <h1>Intro til C64 Sprites</h1>
         <p>
-            Sprites er små grafiske elementer som kan vises uavhengig av bakgrunnsgrafikken på skjermen. På Commodore 64 håndteres sprites ved å sette bestemte minneadresser, noe som gjør det mulig å lage bevegelige objekter som kan flyttes over skjermen uten å påvirke bakgrunnen. Selv om oppsettet kan virke komplisert i starten, gir sprites en effektiv måte å lage animasjoner og interaktive elementer på skjermen. Ved å endre verdier i minnet kan man enkelt flytte, endre farge eller skjule sprites, noe som gir stor fleksibilitet i grafisk programmering.
+            Sprites er små grafiske elementer som kan vises uavhengig av bakgrunnsgrafikken på skjermen. På Commodore 64
+            håndteres sprites ved å sette bestemte minneadresser, noe som gjør det mulig å lage bevegelige objekter som
+            kan flyttes over skjermen uten å påvirke bakgrunnen. Selv om oppsettet kan virke komplisert i starten, gir
+            sprites en effektiv måte å lage animasjoner og interaktive elementer på skjermen. Ved å endre verdier i
+            minnet kan man enkelt flytte, endre farge eller skjule sprites, noe som gir stor fleksibilitet i grafisk
+            programmering.
         </p>
         <p>
             Sprites kommer i to variater. high-res og multi-color. En sprite er delt opp i en 24x21 piksler.
@@ -205,6 +210,10 @@
         </p>
         <img src="./img/sprites-gird-ark.png" width="600" />
         <p>
+            <a href="./docs/C64 SPRITE.pdf" target="_blank">Last ned sprite ark</a> <br>
+            <a href="./docs/SPRITE REGISTERS.pdf" target="_blank">Last ned sprite registre</a>
+        </p>
+        <p>
             Her er et enkelt eksempel på et sprite-program som viser to sprites på skjermen. Programmet leser inn
             sprite-dataene fra startadressen til sprite 1, hvor de første 63 byte utgjør dataene for sprite 1, og de
             neste 63 byte for sprite 2. Deretter settes sprite 1 til å peke på adresse 200*64 = 12800, og sprite 2 til å
@@ -215,6 +224,27 @@
         <p>
             Her er et eksempel på animerte sprites det brukes 3 spirtes for å lage en enkel animasjon.
             <a href="./disks/animatedsprite.d64">Last ned animert sprite disk</a>
+        </p>
+        <p>
+            Hoved delen av programment ligger i mellom linje 10 og 100, der lesers all sprite dataen inn i minnet.
+            Det leses inn på en slik måte at jeg lett kan bare peke på neste 64 bytes for neste sprite.
+            Deretter setter opp sprite 1. Mellom 100 og 200 kjører programmet med en loop som oppdaterer sprite
+            og styrere animasjonen.
+            For at programmet ikke skal kjøre sun rutinene, har jeg på linje 399 kalt END som stopper programmet.
+        </p>
+        <p>
+            <img src="./img/sprite-an-main.png" alt="Sprite animasjon hovedprogram" width="600">
+        </p>
+        </p>
+
+        Den kaller GOSUB til linjer mellom 400 og 800, der den oppdaterer spritene pluss backgrunden skjer.
+        Etter 1000 ligger alle DATA som trengs for alle spirtene.
+        </p>
+        <p>
+            <img src="./img/spirte-an-an.png" alt="Sprite animasjon animering" width="600">
+        </p>
+        <p>
+            <img src="./img/sprite-an-data.png" alt="Sprite animasjon data" width="600">
         </p>
         <!-- Content about C64 sprites will be added here -->
     </section>
